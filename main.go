@@ -1,11 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	initializers "note-taking-app/initializer"
+	"note-taking-app/routes"
 
-	"github.com/gin-gonic/gin"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 func init() {
@@ -18,7 +21,15 @@ func init() {
 
 func main() {
 	app := fiber.New()
-	r := gin.Default()
+	// micro := fiber.New()
+	app.Use(logger.New())
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins:     "http://localhost:8000",
+		AllowHeaders:     "Origin, Content-Type, Accept",
+		AllowMethods:     "GET, POST, PATCH, DELETE",
+		AllowCredentials: true,
+	}))
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Status(200).JSON(fiber.Map{
@@ -27,6 +38,10 @@ func main() {
 		})
 	})
 
+	api := app.Group("/api")
+
+	routes.NoteApiRoutes(api)
 	log.Fatal(app.Listen(":8000"))
-	r.Run()
+	fmt.Println("server running on port 8000")
+
 }

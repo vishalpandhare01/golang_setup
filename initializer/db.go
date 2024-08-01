@@ -27,7 +27,11 @@ func ConnectDB(config *Config) {
 	DB.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("Running Migrations")
-	DB.AutoMigrate(&models.Note{})
+	DB.AutoMigrate(&models.Book{})
 
 	log.Println("🚀 Connected Successfully to the Database")
+}
+func Migrate() {
+	// Automatically migrate your schema
+	DB.AutoMigrate(&models.Book{})
 }

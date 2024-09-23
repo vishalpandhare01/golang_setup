@@ -1,8 +1,9 @@
 - go mod init github.com/githubUserName/gitHubProjectName
 - go get github.com/gofiber/fiber/v2
 - go get github.com/gin-gonic/gin
+- go get -u gorm.io/gorm
+- github.com/spf13/viper
 - go get github.com/google/uuid
 - go get github.com/lib/pq
 - go get github.com/joho/godotenv
 - go get github.com/adhtanjung/go_rest_api
-- go get -u gorm.io/gorm

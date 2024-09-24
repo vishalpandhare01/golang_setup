@@ -17,5 +17,5 @@ write command in terminal:-
 - go env GOPRIVATE
 
 
-- git config --global .url."enter here ssh url".insteadOf "https://github.com/cowhite/reponame"
+- git config --global .url."enter here ssh url".insteadOf "https://github.com/reponame"
 - cat ~/.gitconfig
